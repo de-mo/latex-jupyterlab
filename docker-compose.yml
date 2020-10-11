@@ -9,8 +9,8 @@ services:
             LOCAL_GID: "1000"
             JUPYTER_ENABLE_LAB: "yes"
         ports:
-            - 9999:8888
+            - 8888:8888
         volumes:
-             - /Users/denismorel/Documents/Development/tests/latexlab/data:/home/jovyan/work
-             - /Users/denismorel/Documents/Development/tests/latexlab/texmf:/home/jovyan/texmf
-             - /Users/denismorel/Documents/Development/tests/latexlab/config:/etc/jupyter
+             - /var/lib/latexlab/data:/home/jovyan/work
+             - /var/lib/latexlab/texmf:/home/jovyan/texmf
+             - /var/lib/latexlab/config:/etc/jupyter
