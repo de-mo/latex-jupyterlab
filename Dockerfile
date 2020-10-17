@@ -22,7 +22,13 @@ RUN apt-get auto-remove -y texlive-xetex \
 RUN apt-get install -y --no-install-recommends \
       gosu \
       texlive-xetex \
-      texlive-latex-extra
+      texlive-latex-extra \
+      texlive-fonts-recommended \
+      texlive-plain-generic
+
+# Language french
+RUN apt-get install -y --no-install-recommends \
+      texlive-lang-french
 
 # Install entrypoint
 COPY entrypoint.sh /
