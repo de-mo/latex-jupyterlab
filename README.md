@@ -4,8 +4,6 @@ README latex-jupyterlab
 This is dockerization of jupyterlab with latex. It uses the component [jupyterlab-latex](https://github.com/jupyterlab/jupyterlab-latex)
 
 
-
-
 # Environment variables
 
 |Available variables      |Description                                                |
@@ -19,9 +17,9 @@ Folloing volumes are available:
 
 |Volume          |Description                                               |
 |----------------|----------------------------------------------------------|
-|`/home/jovyan/work` | Location where the notebooks are saved |
-|`/home/jovyan/texmf`     | Directory TEXMFHOME |
-|`/etc/jupyter`     | Location of config file |
+|`/host/work`    | Location where the notebooks are saved |
+|`/host/texmf`   | Directory TEXMFHOME |
+|`/etc/jupyter`  | Location of config file |
 
 ## Ports
 
@@ -37,7 +35,7 @@ First of all configure the file `docker-compose.yml` to you need, in particular 
 
 Start the container using the command `docker-compose up -d` and stop the container using the command `docker-compose down`.
 
-Copy the file `jupyter_notebook_config.py` in the directory `config` to the the location mounted as `/home/jovyan/work`.
+Copy the file `jupyter_notebook_config.py` in the directory `config` to the the location mounted as `/host/work`.
 
 Change the configuration to your need (see https://jupyter-notebook.readthedocs.io/en/stable/config.html). In particular security elements are necessary (ssl or others).
 

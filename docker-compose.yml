@@ -11,6 +11,6 @@ services:
         ports:
             - 8888:8888
         volumes:
-             - /var/lib/latexlab/data:/home/jovyan/work
-             - /var/lib/latexlab/texmf:/home/jovyan/texmf
+             - /var/lib/latexlab/data:/host/work
+             - /var/lib/latexlab/texmf:/host/texmf
              - /var/lib/latexlab/config:/etc/jupyter

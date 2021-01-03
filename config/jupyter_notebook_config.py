@@ -13,7 +13,7 @@ c.NotebookApp.port = 8888
 c.NotebookApp.open_browser = False
 
 # jupyter-latex
-c.NotebookApp.notebook_dir = '/home/jovyan/work'
+c.NotebookApp.notebook_dir = '/host/work'
 
 # https://github.com/jupyter/notebook/issues/3130
 c.FileContentsManager.delete_to_trash = False

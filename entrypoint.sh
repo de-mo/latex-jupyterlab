@@ -18,21 +18,26 @@ then
 fi
 
 # Create user and group
-
 groupadd -o -g $LGID $GROUPNAME #>/dev/null 2>&1 ||
 groupmod -o -g $LGID $GROUPNAME #>/dev/null 2>&1
 useradd -o -m -u $LUID -g $GROUPNAME -s /bin/false $USERNAME #>/dev/null 2>&1 ||
 usermod -o -u $LUID -g $GROUPNAME -s /bin/false $USERNAME #>/dev/null 2>&1
 
-# Add jovyan user to group $GROUPNAME
+# Add $USERNAME user to group of jovyan (group 100)
 # jovyan is the name for the running user
 # see https://github.com/jupyter/docker-stacks/blob/master/base-notebook/Dockerfile)
-usermod -a -G $GROUPNAME jovyan
+usermod -a -G 100 $USERNAME
 
-# Entry point of the base container
-#sudo -u jovyan /home/jovyan/tini -g --
-sudo -u jovyan tlmgr init-usertree
+# Correct user to /work
+sudo chown -R $USERNAME:$GROUPNAME /host/work
+sudo chown -R $USERNAME:$GROUPNAME /host/texmf
+
+# Link /host/texmf to the configured texmfhome
+sudo -u math ln -s /host/texmf/ /home/math/texmf
+
+# Init texmf directory
+sudo -u math tlmgr init-usertree
 
 # Start exec with user sage
 # see https://github.com/jupyter/docker-stacks/blob/master/base-notebook/Dockerfile
-exec gosu jovyan:100 "$@"
+exec gosu $USERNAME:$GROUPNAME "$@"
