@@ -4,7 +4,8 @@ EXPOSE 8888
 
 # Install Jupyterlab_latex
 RUN pip install jupyterlab_latex
-RUN jupyter labextension install @jupyterlab/latex
+#RUN jupyter labextension install @jupyterlab/latex
+RUN jupyter server extension list
 
 USER root
 
